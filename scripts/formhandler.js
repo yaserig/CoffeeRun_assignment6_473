@@ -13,6 +13,8 @@
             throw new Error('Could not find element with selector: ' + selector);
         }
 
+        $('.powerUP').hide();
+
         var slider = document.getElementById('strengthLevel');
         var sliderOutput = document.getElementById('strengthOutput');
         var sliderLabel = document.getElementById('strengthLabel');
@@ -53,6 +55,12 @@
                 console.log(item.name + ' is ' + item.value);
             });
             console.log(data);
+
+            if (data['size'] == 'Coffee-zilla' && data['flavor'] != '' && data['strength'] == 100) {
+                $('#myModal').modal();
+                $('.powerUP').show();
+            }
+
             fn(data);
 
             this.reset();
